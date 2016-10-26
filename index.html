@@ -32,7 +32,7 @@
 
 
   <!-- New Post Form -->
-  <div>
+  <div class="container-fluid">
     <form ng-show="showme" name="userForm" ng-submit="addPost(city)">
           <div class="form-group" ng-class="{'has-error': userForm.title.$invalid && !userForm.title.$pristine, 'has-success': userForm.title.$valid}">
               <label class="control-label" for="title">Title</label>
@@ -58,6 +58,7 @@
           </div>
           <button name="button" ng-disabled="userForm.$invalid" ng-click="showme=false">Submit</button>
       </form>
+      <hr>
   </div>
 
 <!-- Posts Creation -->
