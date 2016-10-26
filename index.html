@@ -83,8 +83,8 @@
         </div>
         <br>
         <div class="panel-footer">
-          <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button></p>
+          <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button> |
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} | <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button></p>
 
           <!-- Add Comment Form -->
           <form ng-show="commentMe" name="commentForm" ng-submit="addComment(comment)">
