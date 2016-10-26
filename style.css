@@ -10,3 +10,7 @@ img {
 .negative {
   color: red;
 }
+
+.panel-body {
+  border-width: black 1px;
+}
