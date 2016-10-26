@@ -69,15 +69,19 @@
           <div class="media-left">
             <img ng-class="image" ng-src="{{city.image}}">
           </div>
-          <h3 class="media-heading">
-            {{city.title}}
+          <div class="media-body">
+          <h3>
             <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
             <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
             <span ng-class="votes(city)"> {{city.votes}} </span>
+            | {{city.title}}
           </h3>
+          <br>
           <p>{{city.description}}</p>
+          </div>
             <div class="pull-right">Posted by: {{city.author}}</div>
         </div>
+        <br>
         <div class="panel-footer">
           <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
           <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button></p>
