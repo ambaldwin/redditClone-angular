@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reddit Clone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+</head>
+
+<body ng-controller="mainController">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Reddit Clone
+        </a>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="showme = !showme">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit Post
+        </button>
+        <input type="text" ng-model="search" placeholder="Search">
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- New Post Form -->
+  <div>
+    <form ng-show="showme" name="userForm" ng-submit="addPost(city)">
+          <div class="form-group" ng-class="{'has-error': userForm.title.$invalid && !userForm.title.$pristine, 'has-success': userForm.title.$valid}">
+              <label class="control-label" for="title">Title</label>
+              <input class="form-control" type="text" name="title" ng-model="city.title" ng-minlength="3" ng-maxlength="12" ng-required="true">
+              <small class="help-block" ng-show="userForm.title.$error.minlength">Title is too short</small>
+              <small class="help-block" ng-show="userForm.title.$error.maxlength">Title is too long</small>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.author.$invalid && !userForm.author.$pristine, 'has-success': userForm.author.$valid}">
+              <label class="control-label" for="author">Author</label>
+              <input class="form-control" type="text" name="author" ng-model="city.author" ng-minlength="3" ng-maxlength="12" ng-required="true">
+              <small class="help-block" ng-show="userForm.author.$error.minlength">Author name is too short</small>
+              <small class="help-block" ng-show="userForm.author.$error.maxlength">Author name is too long</small>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.image.$invalid && !userForm.image.$pristine, 'has-success': userForm.image.$valid}">
+              <label class="control-label" for="image">Image URL</label>
+              <input class="form-control" type="text" name="image" ng-model="city.image" ng-required="true">
+              <small class="help-block" ng-show="userForm.email.$error.email">Enter a valid Image URL</small>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.description.$invalid && !userForm.description.$pristine, 'has-success': userForm.description.$valid}">
+              <label class="control-label" for="description">Description</label>
+              <input class="form-control" type="text" name="zip" ng-model="city.description" ng-required="true">
+              <small class="help-block" ng-show="userForm.description.$invalid && !userForm.description.$pristine">Enter a valid description</small>
+          </div>
+          <button name="button" ng-disabled="userForm.$invalid" ng-click="showme=false">Submit</button>
+      </form>
+  </div>
+
+  <div ng-repeat="city in citiesArray">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="media">
+          <div class="media-left">
+            <img ng-class="image" ng-src="{{city.image}}">
+          </div>
+          <h3 class="media-heading">
+            {{city.title}}
+            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true"></a>
+            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true"></a>
+            <span> {{city.votes}} </span>
+          </h3>
+          <p>{{city.description}}</p>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+            <div class="pull-right">Posted by: {{city.author}}</div>
+        </div>
+        <div class="panel-footer">
+          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          <p class="date" name="date"> {{city.date}}</p>
+          <button type="button" class="btn btn-default">Add Comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
+
+</body>
+
+</html>
