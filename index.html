@@ -71,34 +71,43 @@
             <img ng-class="image" ng-src="{{city.image}}">
           </div>
           <div class="media-body">
-          <h3>
-            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
-            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
-            <span ng-class="votes(city)"> {{city.votes}} </span>
-            | {{city.title}}
-          </h3>
-          <br>
-          <p>{{city.description}}</p>
+            <h3>
+              <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
+              <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
+              <span ng-class="votes(city)"> {{city.votes}} </span>
+              | {{city.title}}
+            </h3>
+            <br>
+            <p>{{city.description}}</p>
           </div>
-            <div class="pull-right">Posted by: {{city.author}}</div>
-        </div>
-        <br>
-        <div class="panel-footer">
-          <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button> |
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} | <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button></p>
+          <div class="pull-right">Posted by: {{city.author}}</div>
+          </div>
+          <br>
+          <div class="panel-footer">
+            <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> placeholder text for comment # </button> |
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} | <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
+            </p>
+
+          <!-- render comments -->
+          <div class="comment" ng-show="showComments">
+            <p ng-repeat="comment in city.comments">
+              <strong>{{ comment.author }}</strong> - {{ comment.text }}
+            </p>
+          </div>
 
           <!-- Add Comment Form -->
-          <form ng-show="commentMe" name="commentForm" ng-submit="addComment(comment)">
+          <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city)">
             <div class="form-group">
               <label for="author">Author</label>
-              <input type="text" placeholder="author" class="form-control" ng-model="comment.author">
+              <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
             </div>
             <div class="form-group">
               <label for="text">Text</label>
-              <input type="text" placeholder="text" class="form-control" ng-model="comment.text">
+              <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
             </div>
-            <button name="button" ng-click="commentMe=false">Submit</button>
+            <button name="button" ng-click="commentMe=false; showComments = !showComments">Submit</button>
           </form>
+
         </div>
       </div>
     </div>

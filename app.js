@@ -7,6 +7,7 @@ app.controller('mainController', function($scope) {
   $scope.view.search = '';
 
   $scope.view.citiesArray = [{
+        id: 0,
         title: 'Denver',
         author: 'Anna Baldwin',
         image: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/2006-03-26_Denver_Skyline_I-25_Speer.jpg',
@@ -15,14 +16,16 @@ app.controller('mainController', function($scope) {
         date: 'Yesterday at 10:57 AM',
         comments: []
     }, {
+        id: 1,
         title: 'Kearney',
         author: 'Ben Fox',
-        description: 'Kearney is a city in and the county seat of Buffalo County, Nebraska, United States. The population was 30,787 at the 2010 census. It is home to the University of Nebraska at Kearney. The westward push of the railroad as the Civil War ended gave birth to the community.',
+        description: 'Kearney is a city in and the county seat of Buffalo County, Nebraska, United States. The population was 30,787 at the 2010 census. It is home to the University of Nebraska at Kearney. The westward push of the railroad as the Civil War ended gave birth to the community. Strategically located on I-80 with convenient access to major markets like Omaha-Lincoln, Denver, Kansas City, Des Moines, Wichita and Cheyenne, Kearney is at the center of a 7-state region and 20 million people.',
         image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/GPRRAMKearney.jpg',
         votes: -4,
         date: 'Last Monday at 9:19 PM',
         comments: []
     }, {
+        id: 2,
         title: 'Chicago',
         author: 'Laura Hranac',
         image: 'https://tctechcrunch2011.files.wordpress.com/2015/02/chicago.jpg',
@@ -31,6 +34,11 @@ app.controller('mainController', function($scope) {
         date: 'January 1, 2016',
         comments: []
     }]
+
+    function createId() {
+      let id = $scope.view.citiesArray.length
+      return id
+    }
 
     $scope.votes = function(city) {
       if (city.votes > 0) {
@@ -43,6 +51,7 @@ app.controller('mainController', function($scope) {
     }
 
     $scope.addPost = function(city) {
+        $scope.city.id = createId();
         $scope.city.date = moment().calendar();
         $scope.city.votes = 0;
         $scope.city = {};
@@ -50,6 +59,15 @@ app.controller('mainController', function($scope) {
         $scope.view.citiesArray.push(city);
         $scope.userForm.$setPristine()
         console.log(city);
+    }
+
+    $scope.newComment = {};
+    $scope.addComment = function(city) {
+        let id = city.id
+        let comment = angular.copy($scope.newComment)
+        $scope.view.citiesArray[id].comments.push(comment);
+        console.log(comment);
+        // console.log('$scope.comments:', $scope.comments);
     }
 
 
