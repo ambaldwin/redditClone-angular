@@ -63,17 +63,16 @@
           </div>
           <h3 class="media-heading">
             {{city.title}}
-            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true"></a>
-            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true"></a>
-            <span> {{city.votes}} </span>
+            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
+            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
+            <span ng-class="votes(city)"> {{city.votes}} </span>
           </h3>
           <p>{{city.description}}</p>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
             <div class="pull-right">Posted by: {{city.author}}</div>
         </div>
         <div class="panel-footer">
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-          <p class="date" name="date"> {{city.date}}</p>
+          <p class="date" name="date"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}}</p>
           <button type="button" class="btn btn-default">Add Comment</button>
         </div>
       </div>

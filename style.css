@@ -2,3 +2,11 @@ img {
   height: 200px;
   width: 200px
 }
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
