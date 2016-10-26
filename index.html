@@ -19,7 +19,13 @@
         <button type="button" class="btn btn-default navbar-btn" ng-click="showme = !showme">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit Post
         </button>
-        <input type="text" ng-model="search" placeholder="Search">
+        <input type="text" ng-model="view.search" placeholder="Search">
+        <label for="sort">Sort By:</label>
+          <select name="singleSelect" ng-model="sort">
+            <option value="-votes">Votes</option>
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+          </select>
       </div>
     </div>
   </nav>
@@ -54,7 +60,7 @@
       </form>
   </div>
 
-  <div ng-repeat="city in citiesArray">
+  <div ng-repeat="city in view.citiesArray | orderBy: sort | filter: view.search">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="media">

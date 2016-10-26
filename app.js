@@ -2,14 +2,17 @@ var app = angular.module('app', []);
 
 app.controller('mainController', function($scope) {
 
+  $scope.sort = '-votes'
+  $scope.view = {};
+  $scope.view.search = '';
 
-  $scope.citiesArray = [{
+  $scope.view.citiesArray = [{
         title: 'Denver',
         author: 'Anna Baldwin',
         image: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/2006-03-26_Denver_Skyline_I-25_Speer.jpg',
         description: 'asd;fljas;dlfja;sldfj;alsdfj;lasdfj;lasdjf;lasdfj;ladsfj;lkadjsf;lkadjsf;lkj',
         votes: 3,
-        date: 'January 12, 2016',
+        date: 'July 12, 2016',
         comments: []
     }, {
         title: 'Kearney',
@@ -17,7 +20,7 @@ app.controller('mainController', function($scope) {
         description: 'asd;fljas;dlfja;sldfj;alsdfj;lasdfj;lasdjf;lasdfj;ladsfj;lkadjsf;lkadjsf;lkj',
         image: 'https://upload.wikimedia.org/wikipedia/commons/7/75/GPRRAMKearney.jpg',
         votes: -50,
-        date: 'January 12, 2016',
+        date: 'February 12, 2016',
         comments: []
     }, {
         title: 'Chicago',
@@ -25,7 +28,7 @@ app.controller('mainController', function($scope) {
         image: 'https://tctechcrunch2011.files.wordpress.com/2015/02/chicago.jpg',
         description: 'asd;fljas;dlfja;sldfj;alsdfj;lasdfj;lasdjf;lasdfj;ladsfj;lkadjsf;lkadjsf;lkj',
         votes: 2,
-        date: 'January 12, 2016',
+        date: 'January 1, 2016',
         comments: []
     }]
 
@@ -44,7 +47,7 @@ app.controller('mainController', function($scope) {
         $scope.city.votes = 0;
         $scope.city = {};
         $scope.city.comments = [];
-        $scope.citiesArray.push(city);
+        $scope.view.citiesArray.push(city);
         $scope.userForm.$setPristine()
         console.log(city);
     }
