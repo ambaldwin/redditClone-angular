@@ -66,7 +66,7 @@ app.controller('mainController', function($scope) {
         $scope.city.votes = 0;
         $scope.city.comments = [];
         $scope.view.citiesArray.push($scope.city);
-        // $scope.userForm.$setPristine()
+        $scope.userForm.$setPristine()
         $scope.city = {};
         console.log(city);
     }
