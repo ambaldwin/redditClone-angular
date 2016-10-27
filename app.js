@@ -34,7 +34,7 @@ app.controller('mainController', function($scope) {
         image: 'https://tctechcrunch2011.files.wordpress.com/2015/02/chicago.jpg',
         description: 'Chicago is the third-most populous city in the United States. With over 2.7 million residents, it is the most populous city in the state of Illinois and the Midwestern United States, and the county seat of Cook County. The Chicago metropolitan area, often referred to as Chicagoland, has nearly 10 million people and is the third-largest in the U.S.',
         votes: 2,
-        date: 'January 1, 2016',
+        date: 'October 2, 2016',
         comments: [{
             author: 'Chandra Valenza',
             text: 'The windy city...I want to visit!'
