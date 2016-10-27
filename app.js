@@ -60,11 +60,11 @@ app.controller('mainController', function($scope) {
     }
 
     $scope.addPost = function(city) {
-        $scope.city.id = createId();
-        $scope.city.date = moment().calendar();
-        $scope.city.votes = 0;
-        $scope.city = {};
-        $scope.city.comments = [];
+        // $scope.city = city;
+        city.id = createId();
+        city.date = moment().calendar();
+        city.votes = 0;
+        city.comments = [];
         $scope.view.citiesArray.push(city);
         $scope.userForm.$setPristine()
         console.log(city);
@@ -73,9 +73,9 @@ app.controller('mainController', function($scope) {
     $scope.newComment = {};
     $scope.addComment = function(city) {
         let id = city.id
+        // console.log(id);
         let comment = angular.copy($scope.newComment)
         $scope.view.citiesArray[id].comments.push(comment);
-        console.log(comment);
         $scope.newComment = {};
     }
 
