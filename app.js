@@ -60,13 +60,14 @@ app.controller('mainController', function($scope) {
     }
 
     $scope.addPost = function(city) {
-        // $scope.city = city;
-        city.id = createId();
-        city.date = moment().calendar();
-        city.votes = 0;
-        city.comments = [];
-        $scope.view.citiesArray.push(city);
-        $scope.userForm.$setPristine()
+        $scope.city = city;
+        $scope.city.id = createId();
+        $scope.city.date = moment().calendar();
+        $scope.city.votes = 0;
+        $scope.city.comments = [];
+        $scope.view.citiesArray.push($scope.city);
+        // $scope.userForm.$setPristine()
+        $scope.city = {};
         console.log(city);
     }
 
