@@ -1,6 +1,6 @@
 img {
-  height: 200px;
-  width: 200px
+  height: 220px;
+  width: 225px
 }
 
 .positive {
@@ -13,4 +13,28 @@ img {
 
 .panel-body {
   border-width: black 5px;
+}
+
+.glyphicon-comment {
+  color: blue;
+}
+
+.glyphicon-calendar {
+  color: blue;
+}
+
+.panel-default {
+  background-color: #f1f1f1;
+}
+
+.searchBox {
+  margin-left: 20px;
+}
+
+.sortBox {
+  margin-left: 20px;
+}
+
+.sortList {
+  margin-left: 10px;
 }

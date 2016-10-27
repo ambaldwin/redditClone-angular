@@ -14,7 +14,10 @@ app.controller('mainController', function($scope) {
         description: 'Denver, officially the City and County of Denver, is the capital and most populous municipality of the U.S. state of Colorado. Denver is located in the South Platte River Valley on the western edge of the High Plains just east of the Front Range of the Rocky Mountains. The Denver downtown district is located immediately east of the confluence of Cherry Creek with the South Platte River, approximately 12 mi (19 km) east of the foothills of the Rocky Mountains. Denver is nicknamed the Mile-High City.',
         votes: 7,
         date: 'Yesterday at 10:57 AM',
-        comments: []
+        comments: [{
+            author: 'Ellen Baldwin',
+            text: 'I love Denver!'
+        }]
     }, {
         id: 1,
         title: 'Kearney',
@@ -32,7 +35,13 @@ app.controller('mainController', function($scope) {
         description: 'Chicago is the third-most populous city in the United States. With over 2.7 million residents, it is the most populous city in the state of Illinois and the Midwestern United States, and the county seat of Cook County. The Chicago metropolitan area, often referred to as Chicagoland, has nearly 10 million people and is the third-largest in the U.S.',
         votes: 2,
         date: 'January 1, 2016',
-        comments: []
+        comments: [{
+            author: 'Chandra Valenza',
+            text: 'The windy city...I want to visit!'
+        }, {
+            author: 'Emmy Brown',
+            text: 'Best shopping ever here.'
+        }]
     }]
 
     function createId() {
@@ -67,7 +76,7 @@ app.controller('mainController', function($scope) {
         let comment = angular.copy($scope.newComment)
         $scope.view.citiesArray[id].comments.push(comment);
         console.log(comment);
-        // console.log('$scope.comments:', $scope.comments);
+        $scope.newComment = {};
     }
 
 

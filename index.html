@@ -14,14 +14,14 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand">
-          Reddit Clone
+          <strong>Reddit Clone</strong>
         </a>
         <button type="button" class="btn btn-default navbar-btn" ng-click="showme = !showme">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit Post
         </button>
-        <input type="text" ng-model="view.search" placeholder="Search">
-        <label for="sort">Sort By:</label>
-          <select name="singleSelect" ng-model="sort">
+        <input type="text" class="searchBox" ng-model="view.search" placeholder="Search">
+          <label class="sortBox" for="sort">  Sort By:</label>
+           <select class="sortList" name="singleSelect" ng-model="sort">
             <option value="-votes">Votes</option>
             <option value="date">Date</option>
             <option value="title">Title</option>
@@ -71,21 +71,25 @@
             <img ng-class="image" ng-src="{{city.image}}">
           </div>
           <div class="media-body">
-            <h3>
+            <h2>
               <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
               <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
               <span ng-class="votes(city)"> {{city.votes}} </span>
               | {{city.title}}
-            </h3>
+            </h2>
             <br>
             <p>{{city.description}}</p>
           </div>
-          <div class="pull-right">Posted by: {{city.author}}</div>
+          <div class="pull-right text-center"><strong>Posted by:</strong> {{city.author}}</div>
           </div>
           <br>
           <div class="panel-footer">
-            <p class="date" name="date"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> placeholder text for comment # </button> |
-              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} | <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
+            <p class="date" name="date">
+              <button type="button" class="btn btn-default" ng-click="showComments = !showComments">
+                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <ng-pluralize count="city.comments.length" when="{'0': '0 Comments', '1': '1 Comment', 'other': '{} Comments'}"></ng-pluralize>
+              </button> |
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} |
+              <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
             </p>
 
           <!-- render comments -->
@@ -105,7 +109,7 @@
               <label for="text">Text</label>
               <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
             </div>
-            <button name="button" ng-click="commentMe=false; showComments = !showComments">Submit</button>
+            <button name="button" ng-click="showComments = true; commentMe=false">Submit</button>
           </form>
 
         </div>
