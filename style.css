@@ -1,6 +1,19 @@
+.container-fluid {
+  background-color: #F8F8FF !important;
+}
+
+.navbar-default {
+  background-color: #f7f7f6 !important;
+}
+
+a.navbar-brand {
+  color: blue !important;
+}
+
 img {
   height: 220px;
-  width: 225px
+  width: 225px;
+  border-radius: 25px;
 }
 
 .positive {
@@ -37,4 +50,34 @@ img {
 
 .sortList {
   margin-left: 10px;
+}
+
+.ng-enter {
+  transition: height .5s;
+  height: 0px;
+  overflow: hidden;
+}
+
+.ng-enter-active {
+  height: 100px;
+}
+
+.ng-leave {
+  transition: height .5s;
+  height: 0px;
+  overflow: hidden;
+}
+
+.ng-leave-active {
+  height: 100px;
+}
+
+.ng-hide-add {
+  opacity: 1.0;
+  display: block !important;
+  transition: opacity 1s;
+}
+
+.ng-hide-add-active {
+  opacity: 0;
 }
