@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
 
-app.use('/api', api);
+app.use('/api/allposts', api);
 
 // app.get("*", function(req,res){
 //   res.sendFile(path.join(__dirname, '../client', 'index.html'));

@@ -1,0 +1,88 @@
+<h3>All Posts page</h3>
+
+<!-- New Post Form -->
+<div class="container-fluid">
+  <form ng-show="showme" name="userForm" ng-submit="addPost(city)">
+        <div class="form-group" ng-class="{'has-error': userForm.title.$invalid && !userForm.title.$pristine, 'has-success': userForm.title.$valid}">
+            <label class="control-label" for="title">Title</label>
+            <input class="form-control" type="text" name="title" ng-model="city.title" ng-minlength="3" ng-maxlength="15" ng-required="true">
+            <small class="help-block" ng-show="userForm.title.$error.minlength">Title is too short</small>
+            <small class="help-block" ng-show="userForm.title.$error.maxlength">Title is too long</small>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.author.$invalid && !userForm.author.$pristine, 'has-success': userForm.author.$valid}">
+            <label class="control-label" for="author">Author</label>
+            <input class="form-control" type="text" name="author" ng-model="city.author" ng-minlength="3" ng-maxlength="12" ng-required="true">
+            <small class="help-block" ng-show="userForm.author.$error.minlength">Author name is too short</small>
+            <small class="help-block" ng-show="userForm.author.$error.maxlength">Author name is too long</small>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.image.$invalid && !userForm.image.$pristine, 'has-success': userForm.image.$valid}">
+            <label class="control-label" for="image">Image URL</label>
+            <input class="form-control" type="text" name="image" ng-model="city.image" ng-required="true">
+            <small class="help-block" ng-show="userForm.email.$error.email">Enter a valid Image URL</small>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.description.$invalid && !userForm.description.$pristine, 'has-success': userForm.description.$valid}">
+            <label class="control-label" for="description">Description</label>
+            <input class="form-control" type="text" name="zip" ng-model="city.description" ng-required="true">
+            <small class="help-block" ng-show="userForm.description.$invalid && !userForm.description.$pristine">Enter a valid description</small>
+        </div>
+        <button name="button" ng-disabled="userForm.$invalid" ng-click="showme=false">Submit</button>
+    </form>
+    <hr>
+</div>
+
+<!-- Posts Creation -->
+<div class="container-fluid">
+<div ng-repeat="city in view.citiesArray | orderBy: sort | filter: view.search">
+  <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
+    <div class="panel-body">
+      <div class="media">
+        <div class="media-left">
+          <img ng-class="image" ng-src="{{city.image}}">
+        </div>
+        <div class="media-body">
+          <h2>
+            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
+            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
+            <span ng-class="votes(city)"> {{city.votes}} </span>
+            | {{city.title}}
+          </h2>
+          <br>
+          <p>{{city.description}}</p>
+        </div>
+        <div class="pull-right text-center"><strong>Posted by:</strong> {{city.author}}</div>
+        </div>
+        <br>
+        <div class="panel-footer">
+          <p class="date" name="date">
+            <button type="button" class="btn btn-default" ng-click="showComments = !showComments">
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <ng-pluralize count="city.comments.length" when="{'0': '0 Comments', '1': '1 Comment', 'other': '{} Comments'}"></ng-pluralize>
+            </button> |
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} |
+            <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
+          </p>
+
+        <!-- render comments -->
+        <div class="comment" ng-show="showComments">
+          <p ng-repeat="comment in city.comments">
+            <strong>{{ comment.author }}</strong> - {{ comment.text }}
+          </p>
+        </div>
+
+        <!-- Add Comment Form -->
+        <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city)">
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
+          </div>
+          <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
+          </div>
+          <button name="button" ng-click="showComments = true; commentMe=false">Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
