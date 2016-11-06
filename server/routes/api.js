@@ -12,4 +12,36 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/', (req, res, next) => {
+  if(!req.session.userInfo) {
+    // let err = new Error()
+    console.log('Need to be logged in to submit a post!');
+  } else {
+  let newCity = {
+    user_id: req.session.userInfo.id,
+    title: req.body.title,
+    image: req.body.image,
+    description: req.body.description,
+    votes: 0
+  }
+  console.log('newCity in route:', newCity);
+  knex('posts').insert(newCity,'*')
+    .then((results) => {
+    res.json(results);
+  })
+}
+});
+
 module.exports = router;
+
+router.post('/', (req, res, next) => {
+
+  if (newPost.title === "" || newPost.body === "") {
+        res.send('Please enter a title and some text!')
+    } else {
+      knex('posts').insert(newPost,'*')
+        .then(() => {
+        res.redirect('/posts')
+      })
+    }
+});

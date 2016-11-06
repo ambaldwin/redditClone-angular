@@ -28,6 +28,16 @@ app.controller('mainController', function($scope, redditService) {
          city.votes -= 1
      }
 
+     $scope.addPost = function(city) {
+       console.log('city in controller:', city);
+       redditService.new(city).then(function(results) {
+         console.log('addedCity back from route:', results);
+        $scope.view.citiesArray.push(results.data[0]);
+        $scope.city = {}
+        $scope.userForm.$setPristine()
+    })
+}
+
 
   //   function createId() {
   //     let id = $scope.view.citiesArray.length

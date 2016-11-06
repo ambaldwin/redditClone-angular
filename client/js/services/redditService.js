@@ -3,12 +3,14 @@ app.service('redditService', function ($http) {
     all: function() {
       return $http.get('./api/allposts');
     },
+    new: function(city) {
+      console.log('city in the service:', city);
+      return $http.post('./api/allposts', city);
+    },
     signup: function(newUser) {
-      console.log('newUser in service', newUser);
       return $http.post('./signup/signup', newUser);
     },
     login: function(returningUser) {
-      console.log('in the login service', returningUser);
       return $http.post('./login/login', returningUser);
     }
     // putOne: function(editedPirate) {
