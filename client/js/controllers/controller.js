@@ -1,13 +1,14 @@
 app.controller('mainController', function($scope, redditService) {
 
   // $scope.sort = '-votes'
-  // $scope.view = {};
+  $scope.view = {};
   // $scope.view.search = '';
 
   $scope.view = {};
 
-  redditService.all().then(function(posts) {
-    console.log('posts coming back in the controller', posts);
+  redditService.all().then(function(city) {
+    console.log('posts coming back in the controller', city);
+          $scope.view.citiesArray = city.data
           // $scope.view.pirates = pirates.data
       })
 
