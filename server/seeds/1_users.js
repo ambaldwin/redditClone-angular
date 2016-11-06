@@ -13,7 +13,7 @@ exports.seed = function(knex) {
       },
       {
         name: 'benfox',
-        email: 'benfox',
+        email: 'ben@gmail.com',
         hash: '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS'
       }]);
     });

@@ -1,0 +1,19 @@
+<h1>Please log into Reddit Clone:</h1>
+<br>
+
+<form name="logIn" ng-submit="submitLogIn(returningUser)">
+  <div class="form-group" ng-class="{'has-error' : logIn.name.$invalid && !logIn.name.$pristine,'has-success' : logIn.name.$valid }">
+    <label class="control-label" for="name">Username:</label>
+    <input type="text" name="name" class="form-control" ng-model="returningUser.name" ng-minlength="2" ng-maxlength="30" ng-required="true" placeholder="Username">
+    <small ng-show="logIn.name.$error.minlength" class="help-block">Username is too short.</small>
+    <small ng-show="logIn.name.$error.maxlength" class="help-block">Username is too long.</small>
+  </div>
+  <div class="form-group" ng-class="{'has-error' : logIn.password.$invalid && !logIn.password.$pristine,'has-success' : logIn.password.$valid }">
+    <label class="control-label" for="password">Password:</label>
+    <input type="password" name="password" class="form-control" ng-model="returningUser.password" ng-minlength="2" ng-maxlength="100" ng-required="true" placeholder="Password">
+    <small ng-show="logIn.password.$error.minlength" class="help-block">Password is too short.</small>
+    <small ng-show="logIn.password.$error.maxlength" class="help-block">Password is too long.</small>
+  </div>
+
+  <button type="submit" class="btn btn-default" ng-disabled="logIn.$invalid">Submit</button>
+</form>
