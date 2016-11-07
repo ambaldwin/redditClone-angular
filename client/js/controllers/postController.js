@@ -13,4 +13,11 @@ app.controller('postController', function($scope, redditService, $location, $rou
             $location.url('/')
         })
     }
+
+    $scope.deletePost = function(city) {
+      console.log('in the delete post controller:', city);
+      redditService.delete(city).then(function() {
+          $location.url('/')
+      })
+  }
 });

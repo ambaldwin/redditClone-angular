@@ -5,7 +5,6 @@ var cookieSession = require('cookie-session');
 var bcrypt = require('bcrypt');
 
 router.post('/', (req, res, next) => {
-  console.log('req.body in route', req.body);
     knex('users')
         .where('name', req.body.name)
         .first()

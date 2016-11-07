@@ -17,8 +17,11 @@ app.service('redditService', function ($http) {
     },
     edit: function(editedCity) {
       const id = editedCity.postId
-      console.log('id in the service', id);
       return $http.put(`/onepost/${id}`, editedCity)
+    },
+    delete: function(city) {
+      const deleteId = city.postId
+      return $http.delete(`/onepost/${deleteId}`)
     }
   }
 })

@@ -30,7 +30,6 @@ app.controller('mainController', function($scope, redditService) {
     $scope.addPost = function(city) {
         redditService.new(city).then(function(results) {
             $scope.view.citiesArray.push(results.data[0]);
-            console.log(results.data);
             $scope.city = {}
             $scope.userForm.$setPristine()
         })

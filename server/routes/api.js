@@ -24,7 +24,6 @@ router.post('/', (req, res, next) => {
     description: req.body.description,
     votes: 0
   }
-  console.log('newCity in route:', newCity);
   knex('posts').insert(newCity,'*')
     .then((results) => {
     res.json(results);

@@ -5,8 +5,6 @@ var cookieSession = require('cookie-session');
 var bcrypt = require('bcrypt');
 
 router.post('/', (req, res, next) => {
-  console.log('req.body:', req.body);
-  console.log('getting in the signup route');
     knex('users')
         .where('email', req.body.email)
         .then((user) => {
