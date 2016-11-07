@@ -4,7 +4,6 @@ app.service('redditService', function ($http) {
       return $http.get('./api/allposts');
     },
     new: function(city) {
-      console.log('city in the service:', city);
       return $http.post('./api/allposts', city);
     },
     signup: function(newUser) {
@@ -12,13 +11,14 @@ app.service('redditService', function ($http) {
     },
     login: function(returningUser) {
       return $http.post('./login/login', returningUser);
+    },
+    one: function(id) {
+      return $http.get(`/onepost/${id}`)
+    },
+    edit: function(editedCity) {
+      const id = editedCity.postId
+      console.log('id in the service', id);
+      return $http.put(`/onepost/${id}`, editedCity)
     }
-    // putOne: function(editedPirate) {
-    //   const id = editedPirate.id
-    //   return $http.put(`/api/pirates/${id}`, editedPirate)
-    // },
-    // delete: function(id) {
-    //   return $http.delete(`/api/pirates/${id}`)
-    // }
   }
 })

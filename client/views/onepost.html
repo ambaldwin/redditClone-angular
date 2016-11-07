@@ -1,0 +1,85 @@
+<h1>one post page</h1>
+
+<!-- Posts Creation -->
+<div class="container-fluid">
+  <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
+    <div class="panel-body">
+      <div class="media">
+        <div class="media-left">
+          <img ng-class="image" ng-src="{{city.image}}">
+        </div>
+        <div class="media-body">
+          <h2>
+            <a class="glyphicon glyphicon-arrow-up" aria-hidden="true" ng-click="upVote(city)"></a>
+            <a class="glyphicon glyphicon-arrow-down" aria-hidden="true" ng-click="downVote(city)"></a>
+            <span ng-class="votes(city)"> {{city.votes}} </span>
+            | {{city.title}}
+          </h2>
+          <br>
+          <p>{{city.description}}</p>
+        </div>
+        <div class="pull-right text-center"><strong>Posted by:</strong> {{city.name}}</div>
+        </div>
+        <br>
+        <div class="panel-footer">
+          <p class="date" name="date">
+            <button type="button" class="btn btn-default" ng-click="showComments = !showComments">
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <ng-pluralize count="city.comments.length" when="{'0': '0 Comments', '1': '1 Comment', 'other': '{} Comments'}"></ng-pluralize>
+            </button> |
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} |
+            <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
+            <button type="button" class="btn btn-default" ng-click="showEditForm = !showEditForm">EDIT</button>
+            <!-- <a  ng-click="showEditForm = !showEditForm">EDIT  | </a> -->
+            <!-- <a href="" ng-click="deletePirate(pirate)">  DELETE the MATEY</a> -->
+          </p>
+
+        <!-- render comments -->
+        <div class="comment" ng-show="showComments">
+          <p ng-repeat="comment in city.comments">
+            <strong>{{ comment.author }}</strong> - {{ comment.text }}
+          </p>
+        </div>
+
+        <!-- Add Comment Form -->
+        <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city)">
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
+          </div>
+          <div class="form-group">
+            <label for="text">Text</label>
+            <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
+          </div>
+          <button name="button" ng-click="showComments = true; commentMe=false">Submit</button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Edit Post Form -->
+    <div class="container-fluid">
+      <form ng-show="showEditForm" name="editPost">
+            <input type="text" name="id" value="{{city.postId}}" hidden>
+            <div class="form-group" ng-class="{'has-error': editPost.title.$invalid && !editPost.title.$pristine, 'has-success': editPost.title.$valid}">
+                <label class="control-label" for="title">Title</label>
+                <input class="form-control" type="text" name="title" value="city.title" ng-model="city.title" ng-minlength="3" ng-maxlength="15" ng-required="true">
+                <small class="help-block" ng-show="editPost.title.$error.minlength">Title is too short</small>
+                <small class="help-block" ng-show="editPost.title.$error.maxlength">Title is too long</small>
+            </div>
+            <div class="form-group" ng-class="{'has-error': editPost.image.$invalid && !editPost.image.$pristine, 'has-success': editPost.image.$valid}">
+                <label class="control-label" for="image">Image URL</label>
+                <input class="form-control" type="text" name="image" value="city.image" ng-model="city.image" ng-required="true">
+                <small class="help-block" ng-show="editPost.email.$error.email">Enter a valid Image URL</small>
+            </div>
+            <div class="form-group" ng-class="{'has-error': editPost.description.$invalid && !editPost.description.$pristine, 'has-success': editPost.description.$valid}">
+                <label class="control-label" for="description">Description</label>
+                <input class="form-control" type="text" name="description" value="city.description" ng-model="city.description" ng-required="true">
+                <small class="help-block" ng-show="editPost.description.$invalid && !editPost.description.$pristine">Enter a valid description</small>
+            </div>
+            <button name="button" ng-disabled="editPost.$invalid" ng-click="showEditForm=false; submitEditPost(city)">Save Changes</button>
+        </form>
+        <hr>
+    </div>
+
+  </div>
+</div>

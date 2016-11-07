@@ -15,4 +15,8 @@ app.config(function($routeProvider) {
         templateUrl: '../views/login.html',
         controller: 'signUpController'
       })
+      .when('/:id', {
+        templateUrl: '../views/onepost.html',
+        controller: 'postController'
+      })
 });

@@ -11,6 +11,7 @@ var cookieSession = require('cookie-session');
 var api = require('./routes/api')
 var signup = require('./routes/signup')
 var login = require('./routes/login')
+var onepost = require('./routes/onepost')
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(cookieSession({
 app.use('/api/allposts', api);
 app.use('/signup/signup', signup)
 app.use('/login/login', login)
+app.use('/onepost', onepost)
 
 
 // app.get("*", function(req,res){

@@ -29,12 +29,6 @@
             <small class="help-block" ng-show="userForm.title.$error.minlength">Title is too short</small>
             <small class="help-block" ng-show="userForm.title.$error.maxlength">Title is too long</small>
         </div>
-        <!-- <div class="form-group" ng-class="{'has-error': userForm.author.$invalid && !userForm.author.$pristine, 'has-success': userForm.author.$valid}">
-            <label class="control-label" for="author">Author</label>
-            <input class="form-control" type="text" name="author" ng-model="city.author" ng-minlength="3" ng-maxlength="12" ng-required="true">
-            <small class="help-block" ng-show="userForm.author.$error.minlength">Author name is too short</small>
-            <small class="help-block" ng-show="userForm.author.$error.maxlength">Author name is too long</small>
-        </div> -->
         <div class="form-group" ng-class="{'has-error': userForm.image.$invalid && !userForm.image.$pristine, 'has-success': userForm.image.$valid}">
             <label class="control-label" for="image">Image URL</label>
             <input class="form-control" type="text" name="image" ng-model="city.image" ng-required="true">
@@ -42,7 +36,7 @@
         </div>
         <div class="form-group" ng-class="{'has-error': userForm.description.$invalid && !userForm.description.$pristine, 'has-success': userForm.description.$valid}">
             <label class="control-label" for="description">Description</label>
-            <input class="form-control" type="text" name="zip" ng-model="city.description" ng-required="true">
+            <input class="form-control" type="text" name="description" ng-model="city.description" ng-required="true">
             <small class="help-block" ng-show="userForm.description.$invalid && !userForm.description.$pristine">Enter a valid description</small>
         </div>
         <button name="button" ng-disabled="userForm.$invalid" ng-click="showme=false">Submit</button>
@@ -69,7 +63,7 @@
           <br>
           <p>{{city.description}}</p>
         </div>
-        <div class="pull-right text-center"><strong>Posted by:</strong> {{city.name}}</div>
+        <div class="pull-right text-center"><strong>Posted by:</strong> {{city.name}} | <a href="/#/{{city.postId}}"> <strong>  Click for More!</strong></a></div>
         </div>
         <br>
         <div class="panel-footer">

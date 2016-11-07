@@ -33,15 +33,3 @@ router.post('/', (req, res, next) => {
 });
 
 module.exports = router;
-
-router.post('/', (req, res, next) => {
-
-  if (newPost.title === "" || newPost.body === "") {
-        res.send('Please enter a title and some text!')
-    } else {
-      knex('posts').insert(newPost,'*')
-        .then(() => {
-        res.redirect('/posts')
-      })
-    }
-});
