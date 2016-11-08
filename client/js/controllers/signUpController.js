@@ -15,4 +15,5 @@ app.controller('signUpController', function($scope, redditService, $location) {
                $location.url('/')
           })
       }
+
 });

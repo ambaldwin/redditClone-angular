@@ -18,6 +18,9 @@ app.service('redditService', function ($http) {
     login: function(returningUser) {
       return $http.post('./login/login', returningUser);
     },
+    logout: function() {
+      return $http.get('./login/login');
+    },
     one: function(id) {
       return $http.get(`/onepost/${id}`)
     },

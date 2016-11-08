@@ -26,6 +26,12 @@ app.controller('mainController', function($scope, redditService, $location) {
                 })
             }
 
+            $scope.logOut = function() {
+              redditService.logout().then(function() {
+                  $location.url('/')
+              })
+            }
+
     //
     //   $scope.newComment = {};
     //   $scope.addComment = function(city) {

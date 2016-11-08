@@ -19,9 +19,9 @@ router.post('/', (req, res, next) => {
         })
 });
 
-// router.get('/logout', ((req, res, next) => {
-//     req.session = null;
-//     res.redirect('/');
-// }))
+router.get('/', (req, res, next) => {
+    req.session = null;
+    res.send('User logged out!')
+})
 
 module.exports = router;
