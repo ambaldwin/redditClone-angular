@@ -7,14 +7,12 @@ app.controller('postController', function($scope, redditService, $location, $rou
       })
 
       $scope.submitEditPost = function(city) {
-        console.log('city in the controller', city);
         redditService.edit(city).then(function() {
             $location.url('/')
         })
     }
 
     $scope.deletePost = function(city) {
-      console.log('in the delete post controller:', city);
       redditService.delete(city).then(function() {
           $location.url('/')
       })

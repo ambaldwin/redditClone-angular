@@ -1,40 +1,41 @@
-app.controller('mainController', function($scope, redditService) {
+app.controller('mainController', function($scope, redditService, $location) {
 
-    $scope.sort = '-votes'
-    $scope.view = {};
-    $scope.view.search = '';
-    $scope.view = {};
+            $scope.sort = '-votes'
+            $scope.view = {};
+            $scope.view.search = '';
+            $scope.view = {};
 
-    redditService.all().then(function(city) {
-        $scope.view.citiesArray = city.data
-    })
+            redditService.all().then(function(city) {
+                $scope.view.citiesArray = city.data
+            })
 
-    $scope.votes = function(city) {
-        if (city.votes > 0) {
-            return 'positive';
-        } else if (city.votes < 0) {
-            return 'negative';
-        } else {
-            return '';
-        }
-    }
+            $scope.votes = function(city) {
+                if (city.votes > 0) {
+                    return 'positive';
+                } else if (city.votes < 0) {
+                    return 'negative';
+                } else {
+                    return '';
+                }
+            }
 
-    $scope.upVote = function(city) {
-     city.votes += 1
-   }
+            $scope.upVote = function(city) {
+                city.votes += 1
+                redditService.up(city).then(function() {})
+            }
 
-   $scope.downVote = function(city) {
-     console.log('city in downvote', city);
-     city.votes -= 1
-   }
+            $scope.downVote = function(city) {
+                city.votes -= 1
+                redditService.down(city).then(function() {})
+            }
 
-    $scope.addPost = function(city) {
-        redditService.new(city).then(function(results) {
-            $scope.view.citiesArray.push(results.data[0]);
-            $scope.city = {}
-            $scope.userForm.$setPristine()
-        })
-    }
+            $scope.addPost = function(city) {
+                redditService.new(city).then(function(results) {
+                    $scope.view.citiesArray.push(results.data[0]);
+                    $scope.city = {}
+                    $scope.userForm.$setPristine()
+                })
+            }
 
 
     //

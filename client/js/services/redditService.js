@@ -6,6 +6,12 @@ app.service('redditService', function ($http) {
     new: function(city) {
       return $http.post('./api/allposts', city);
     },
+    up: function(city) {
+      return $http.put('./votes', city);
+    },
+    down: function(city) {
+      return $http.put('./votes', city);
+    },
     signup: function(newUser) {
       return $http.post('./signup/signup', newUser);
     },

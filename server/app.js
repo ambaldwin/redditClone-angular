@@ -12,6 +12,7 @@ var api = require('./routes/api')
 var signup = require('./routes/signup')
 var login = require('./routes/login')
 var onepost = require('./routes/onepost')
+var votes = require('./routes/votes')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/allposts', api);
 app.use('/signup/signup', signup)
 app.use('/login/login', login)
 app.use('/onepost', onepost)
+app.use('/votes', votes)
 
 
 // app.get("*", function(req,res){
