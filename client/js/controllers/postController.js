@@ -3,6 +3,7 @@ app.controller('postController', function($scope, redditService, $location, $rou
     var id = $routeParams.id
 
       redditService.one(id).then(function(post) {
+        console.log('post in one post controller', post);
           $scope.city = post.data
       })
 

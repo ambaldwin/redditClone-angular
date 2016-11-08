@@ -3,7 +3,6 @@ app.controller('mainController', function($scope, redditService, $location) {
             $scope.sort = '-votes'
             $scope.view = {};
             $scope.view.search = '';
-            $scope.view = {};
 
             redditService.all().then(function(city) {
                 $scope.view.citiesArray = city.data
