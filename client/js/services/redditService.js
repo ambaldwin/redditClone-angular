@@ -19,9 +19,9 @@ app.service('redditService', function ($http) {
       const id = editedCity.postId
       return $http.put(`/onepost/${id}`, editedCity)
     },
-    delete: function(city) {
-      const deleteId = city.postId
-      return $http.delete(`/onepost/${deleteId}`)
+    delete: function(id) {
+      // const deleteId = city.postId
+      return $http.delete(`/onepost/${id}`)
     }
   }
 })

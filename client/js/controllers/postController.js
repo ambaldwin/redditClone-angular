@@ -8,7 +8,6 @@ app.controller('postController', function($scope, redditService, $location, $rou
 
       $scope.submitEditPost = function(city) {
         console.log('city in the controller', city);
-        // var editedPirate = $scope.pirates
         redditService.edit(city).then(function() {
             $location.url('/')
         })

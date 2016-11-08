@@ -8,9 +8,22 @@ router.get('/', function(req, res, next) {
     .join('users', 'posts.user_id', 'users.id')
     .select('posts.id as postId', 'users.id as userId', 'users.name as name', 'posts.votes as votes', 'posts.title as title', 'posts.description as description', 'posts.created_at as date', 'posts.image as image')
     .then((posts) => {
-    res.json(posts)
+      var postComments = posts;
+      knex('comments').then(comments =>{
+        postComments.forEach(post => {
+          post.comments = []
+          comments.forEach(comment => {
+            if (post.postId === comment.post_id) {
+              post.comments.push(comment)
+            }
+          })
+        })
+        res.json(postComments)
+      })
   })
 });
+
+
 
 router.post('/', (req, res, next) => {
   if(!req.session.userInfo) {

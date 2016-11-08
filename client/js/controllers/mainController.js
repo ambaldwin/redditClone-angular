@@ -20,12 +20,13 @@ app.controller('mainController', function($scope, redditService) {
     }
 
     $scope.upVote = function(city) {
-        city.votes += 1
-    }
+     city.votes += 1
+   }
 
-    $scope.downVote = function(city) {
-        city.votes -= 1
-    }
+   $scope.downVote = function(city) {
+     console.log('city in downvote', city);
+     city.votes -= 1
+   }
 
     $scope.addPost = function(city) {
         redditService.new(city).then(function(results) {
@@ -34,7 +35,6 @@ app.controller('mainController', function($scope, redditService) {
             $scope.userForm.$setPristine()
         })
     }
-
 
 
     //
