@@ -8,16 +8,6 @@ app.controller('mainController', function($scope, redditService, $location) {
                 $scope.view.citiesArray = city.data
             })
 
-            $scope.votes = function(city) {
-                if (city.votes > 0) {
-                    return 'positive';
-                } else if (city.votes < 0) {
-                    return 'negative';
-                } else {
-                    return '';
-                }
-            }
-
             $scope.upVote = function(city) {
                 city.votes += 1
                 redditService.up(city).then(function() {})
@@ -35,7 +25,6 @@ app.controller('mainController', function($scope, redditService, $location) {
                     $scope.userForm.$setPristine()
                 })
             }
-
 
     //
     //   $scope.newComment = {};

@@ -6,12 +6,23 @@ var bcrypt = require('bcrypt');
 
 router.get('/:id', (req, res, next) => {
     knex('posts')
+    .where('posts.id', req.params.id)
     .join('users', 'posts.user_id', 'users.id')
     .select('posts.id as postId', 'users.id as userId', 'users.name as name', 'posts.votes as votes', 'posts.title as title', 'posts.description as description', 'posts.created_at as date', 'posts.image as image')
-    .where('posts.id', req.params.id).first()
-    .then((post) => {
-      res.json(post);
-    })
+    .then((posts) => {
+      var postComments = posts;
+      knex('comments').then(comments =>{
+        postComments.forEach(post => {
+          post.comments = []
+          comments.forEach(comment => {
+            if (post.postId === comment.post_id) {
+              post.comments.push(comment)
+            }
+          })
+        })
+        res.json(postComments)
+      })
+  })
 });
 
 // router.get('/', function(req, res, next) {
