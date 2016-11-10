@@ -11,7 +11,11 @@ router.post('/', (req, res, next) => {
         .then((user) => {
             var passwordMatch = bcrypt.compareSync(req.body.password, user.hash)
             if (passwordMatch == false) {
-                console.log('bad email or password in route!');
+              const error = {
+                message: 'Bad email or password! Please try again.'
+              }
+              res.status(403)
+              res.json(error)
             } else {
                 req.session.userInfo = user
                 res.send('User logged in!')

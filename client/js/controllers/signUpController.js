@@ -5,6 +5,8 @@ app.controller('signUpController', function($scope, redditService, $location) {
             $scope.newUser = {}
              $scope.signUp.$setPristine()
              $location.url('/')
+        }).catch(function(error) {
+          $scope.error = 'Already a user, please login!'
         })
     }
 
@@ -13,7 +15,8 @@ app.controller('signUpController', function($scope, redditService, $location) {
               $scope.returningUser = {}
                $scope.logIn.$setPristine()
                $location.url('/')
+          }).catch(function(error) {
+            $scope.error = 'Bad email or password! Please try again.'
           })
       }
-
 });

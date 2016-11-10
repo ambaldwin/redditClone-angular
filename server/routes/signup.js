@@ -29,7 +29,11 @@ router.post('/', (req, res, next) => {
                             })
                     })
             } else {
-              console.log('User already exists');
+              const error = {
+                message: 'Already a user, please log in!'
+              }
+              res.status(403)
+              res.json(error)
             }
         })
 })

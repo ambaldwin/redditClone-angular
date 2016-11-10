@@ -5,7 +5,6 @@ var cookieSession = require('cookie-session');
 var bcrypt = require('bcrypt');
 
 router.get('/:id', (req, res, next) => {
-  console.log('onepost id in route');
     knex('posts')
     .where('posts.id', req.params.id)
     .join('users', 'posts.user_id', 'users.id')

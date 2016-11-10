@@ -28,26 +28,10 @@ app.controller('mainController', function($scope, redditService, $location) {
                 })
             }
 
-
-
-
             $scope.logOut = function() {
               redditService.logout().then(function() {
                   $location.url('/')
               })
             }
-
-    //
-    //   $scope.newComment = {};
-    //   $scope.addComment = function(city) {
-    //       let id = city.id
-    //       // console.log(id);
-    //       let comment = angular.copy($scope.newComment)
-    //       $scope.view.citiesArray[id].comments.push(comment);
-    //       $scope.newComment = {};
-    //   }
-    //
-    //
-
 
 });

@@ -1,6 +1,10 @@
 <h1>Please sign up for Reddit Clone:</h1>
 <br>
 
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset">
+    <p class="error">{{error}}</p>
+</div>
+
 <form name="signUp" ng-submit="submitSignUp(newUser)">
   <div class="form-group" ng-class="{'has-error' : signUp.name.$invalid && !signUp.name.$pristine,'has-success' : signUp.name.$valid }">
     <label class="control-label" for="name">Username:</label>
