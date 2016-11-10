@@ -25,7 +25,10 @@ router.post('/', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
     req.session = null;
-    res.send('User logged out!')
+    const error = {
+      message: 'Logged out.'
+    }
+    res.send(error)
 })
 
 module.exports = router;

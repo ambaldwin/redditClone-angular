@@ -3,6 +3,7 @@ app.controller('mainController', function($scope, redditService, $location) {
             $scope.sort = '-votes'
             $scope.view = {};
             $scope.view.search = '';
+            $scope.error = ''
 
             redditService.all().then(function(city) {
                 $scope.view.citiesArray = city.data
@@ -29,7 +30,8 @@ app.controller('mainController', function($scope, redditService, $location) {
             }
 
             $scope.logOut = function() {
-              redditService.logout().then(function() {
+              redditService.logout().then(function(data) {
+                $scope.error = data.data.message
                   $location.url('/')
               })
             }
