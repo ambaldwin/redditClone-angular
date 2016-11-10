@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www"
+    "start": "node ./server/bin/www",
+    "knex": "knex",
+    "heroku-postbuild": "knex migrate:latest",
+    "nodemon": "node app.js"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
