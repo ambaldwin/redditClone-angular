@@ -66,6 +66,13 @@
             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}}
           </p>
 
+          <!-- render comments -->
+          <div class="comment" ng-show="showComments">
+            <p ng-repeat="comment in city.comments">
+              <strong>COMMENT:</strong> {{ comment.text }}
+            </p>
+          </div>
+
       </div>
     </div>
   </div>
