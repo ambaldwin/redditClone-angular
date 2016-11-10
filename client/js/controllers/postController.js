@@ -19,6 +19,8 @@ app.controller('postController', function($scope, redditService, $location, $rou
     $scope.submitEditPost = function(city) {
         redditService.edit(city).then(function() {
             $location.url('/')
+        }).catch(function(error) {
+          $scope.error = 'You must be logged in to edit a post.'
         })
     }
 

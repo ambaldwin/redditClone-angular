@@ -1,5 +1,8 @@
-
-{{error}}
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset panel panel-default">
+  <div class="panel-body">
+    <p class="error">{{error}}</p>
+  </div>
+</div>
 
 <!-- Posts Creation -->
 <div class="container-fluid">
@@ -62,7 +65,7 @@
             <input type="text" name="id" value="{{city.postId}}" hidden>
             <div class="form-group" ng-class="{'has-error': editPost.title.$invalid && !editPost.title.$pristine, 'has-success': editPost.title.$valid}">
                 <label class="control-label" for="title">Title</label>
-                <input class="form-control" type="text" name="title" value="city.title" ng-model="city.title" ng-minlength="3" ng-maxlength="15" ng-required="true">
+                <input class="form-control" type="text" name="title" value="city.title" ng-model="city.title" ng-minlength="3" ng-maxlength="25" ng-required="true">
                 <small class="help-block" ng-show="editPost.title.$error.minlength">Title is too short</small>
                 <small class="help-block" ng-show="editPost.title.$error.maxlength">Title is too long</small>
             </div>

@@ -27,8 +27,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/', (req, res, next) => {
   if(!req.session.userInfo) {
-    // let err = new Error()
-    console.log('Need to be logged in to submit a post!');
+    const error = {
+      message: 'You need to be logged in to submit a new post!'
+    }
+    res.status(403)
+    res.json(error)
   } else {
   let newCity = {
     user_id: req.session.userInfo.id,

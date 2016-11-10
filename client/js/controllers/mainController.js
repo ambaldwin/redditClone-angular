@@ -19,12 +19,17 @@ app.controller('mainController', function($scope, redditService, $location) {
             }
 
             $scope.addPost = function(city) {
-                redditService.new(city).then(function(results) {
+              redditService.new(city).then(function(results) {
                     $scope.view.citiesArray.push(results.data[0]);
                     $scope.city = {}
                     $scope.userForm.$setPristine()
+                }).catch(function(error) {
+                  $scope.error = 'You must be logged in to create a new post.'
                 })
             }
+
+
+
 
             $scope.logOut = function() {
               redditService.logout().then(function() {

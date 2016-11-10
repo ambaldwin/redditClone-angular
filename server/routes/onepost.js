@@ -26,29 +26,13 @@ router.get('/:id', (req, res, next) => {
   })
 });
 
-// router.get('/', function(req, res, next) {
-//   knex('posts')
-//     .join('users', 'posts.user_id', 'users.id')
-//     .select('posts.id as postId', 'users.id as userId', 'users.name as name', 'posts.votes as votes', 'posts.title as title', 'posts.description as description', 'posts.created_at as date', 'posts.image as image')
-//     .then((posts) => {
-//       var postComments = posts;
-//       knex('comments').then(comments =>{
-//         postComments.forEach(post => {
-//           post.comments = []
-//           comments.forEach(comment => {
-//             if (post.postId === comment.post_id) {
-//               post.comments.push(comment)
-//             }
-//           })
-//         })
-//         res.json(postComments)
-//       })
-//   })
-// });
-
 router.put('/:id', function(req, res, next) {
   if(!req.session.userInfo) {
-    console.log('Need to be logged in to edit a post!');
+    const error = {
+      message: 'You need to be logged in to edit a post!'
+    }
+    res.status(403)
+    res.json(error)
   } else {
     let editedCity = {
       title: req.body.title,
