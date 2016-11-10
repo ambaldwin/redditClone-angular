@@ -31,6 +31,13 @@ app.service('redditService', function ($http) {
     delete: function(id) {
       // const deleteId = city.postId
       return $http.delete(`/onepost/${id}`)
+    },
+    newComment: function(city, newComment) {
+      let commentObj = {
+        text: newComment.text,
+        postId: city.postId
+      }
+        return $http.post('./comments', commentObj);
     }
   }
 })

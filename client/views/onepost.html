@@ -42,11 +42,8 @@
         </div>
 
         <!-- Add Comment Form -->
-        <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city)">
-          <div class="form-group">
-            <label for="author">Author</label>
-            <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
-          </div>
+        <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city, newComment)">
+          <input type="text" name="id" value="{{city.postId}}" hidden>
           <div class="form-group">
             <label for="text">Text</label>
             <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">

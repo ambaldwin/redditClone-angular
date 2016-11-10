@@ -13,6 +13,7 @@ var signup = require('./routes/signup')
 var login = require('./routes/login')
 var onepost = require('./routes/onepost')
 var votes = require('./routes/votes')
+var comments = require('./routes/comments')
 
 var app = express();
 
@@ -35,7 +36,7 @@ app.use('/signup/signup', signup)
 app.use('/login/login', login)
 app.use('/onepost', onepost)
 app.use('/votes', votes)
-
+app.use('/comments', comments)
 
 // app.get("*", function(req,res){
 //   res.sendFile(path.join(__dirname, '../client', 'index.html'));

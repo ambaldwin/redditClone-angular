@@ -63,32 +63,10 @@
             <button type="button" class="btn btn-default" ng-click="showComments = !showComments">
               <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <ng-pluralize count="city.comments.length" when="{'0': '0 Comments', '1': '1 Comment', 'other': '{} Comments'}"></ng-pluralize>
             </button> |
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}} |
-            <button type="button" class="btn btn-default" ng-click="commentMe = !commentMe">Add Comment</button>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{city.date}}
           </p>
-
-        <!-- render comments -->
-        <div class="comment" ng-show="showComments">
-          <p ng-repeat="comment in city.comments">
-            <strong>COMMENT:</strong> {{ comment.text }}
-          </p>
-        </div>
-
-        <!-- Add Comment Form -->
-        <form ng-show="commentMe" name="commentForm" ng-submit="addComment(city)">
-          <div class="form-group">
-            <label for="author">Author</label>
-            <input type="text" placeholder="author" class="form-control" ng-model="newComment.author">
-          </div>
-          <div class="form-group">
-            <label for="text">Text</label>
-            <input type="text" placeholder="text" class="form-control" ng-model="newComment.text">
-          </div>
-          <button name="button" ng-click="showComments = true; commentMe=false">Submit</button>
-        </form>
 
       </div>
     </div>
   </div>
-</div>
 </div>

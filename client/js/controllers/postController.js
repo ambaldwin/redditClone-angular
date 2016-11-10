@@ -30,5 +30,15 @@ app.controller('postController', function($scope, redditService, $location, $rou
         })
     }
 
+    $scope.addComment = function(city, newComment) {
+      redditService.newComment(city, newComment).then(function(results) {
+        const comment = results.data[0]
+        $scope.city.comments.push(comment)
+        $scope.newComment = {};
+        $scope.commentForm.$setPristine()
+        }).catch(function(error) {
+          $scope.error = 'You must be logged in to add a comment.'
+        })
+      }
 
 });
