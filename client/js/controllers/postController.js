@@ -15,7 +15,6 @@ app.controller('postController', function($scope, redditService, $location, $rou
         redditService.down(city).then(function() {})
     }
 
-
     $scope.submitEditPost = function(city) {
         redditService.edit(city).then(function() {
             $location.url('/')
