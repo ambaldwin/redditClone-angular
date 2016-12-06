@@ -10,4 +10,4 @@ An angular app and clone of Reddit that mimics the funtionality of that wildly p
 
 ##Technologies
 
-Node, Express, Angular, PostgreSQL, Bootstrap
+Node, Express, Angular, PostgreSQL, Bootstrap, HTML5, CSS
