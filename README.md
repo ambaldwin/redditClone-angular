@@ -2,7 +2,7 @@
 
 ![screen shot 2016-12-06 at 3 10 20 pm](https://cloud.githubusercontent.com/assets/18018191/20945895/2a33559c-bbc6-11e6-9523-6fefc2a57c97.png)
 
-An angular app and clone of Reddit that mimics the funtionality of that wildly popular website - upvotes, downvotes, sorting, adding posts, editing posts, deleting posts, adding comments.
+An angular app and clone of Reddit that mimics the functionality of that wildly popular website - upvotes, downvotes, sorting, adding posts, editing posts, deleting posts, adding comments.
 
 **Check it out for yourself here!:** https://baldwin-reddit.herokuapp.com/#/
 
